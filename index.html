@@ -209,7 +209,7 @@ body {
                 data-catFilter=""
                 data-title="Introduction">
 
-            <p>In early 2015, <a href="http://nicolas.kruchten.com">Nicolas Kruchten</a> collaborated with a reporter from the Montreal Gazette to analyze a dataset containing information about 1.4 million service requests received by the City of Montreal from its citizens. The resulting article was entitled "<a href="http://montrealgazette.com/news/local-news/311-calls-whats-bugging-montreal" target="_blank">Montreal's 311 records shed light on residents' concerns — to a point</a>" and credits Nicolas at the bottom. The dataset, obtained from the city's Gestion des demandes clients (GDC) system via an Access to Information request, covered the five years from 2008 to 2012 and contained the date and a very short description for each request, and in most cases, an address. The service requests were received by the city through its 311 phone line or at service counters throughout the city.</p>
+            <p>In early 2015, <a href="http://nicolas.kruchten.com">Nicolas Kruchten</a> collaborated with a reporter from the Montreal Gazette to analyze a dataset containing information about 1.4 million service requests received by the City of Montreal from its citizens. The resulting article was entitled "<a href="http://montrealgazette.com/news/local-news/311-calls-whats-bugging-montreal" target="_blank">Montreal's 311 records shed light on residents' concerns — to a point</a>" and credits Nicolas at the bottom. The dataset, obtained from the city's Gestion des demandes clients (GDC) system via an Access to Information request, covered the five years from 2008 to 2012 and contained only the date and a very short description for each request, and in most cases, an address. Notably missing was any indication of resolution time or correspondance with the originating citizen. The service requests were received by the city through its 311 phone line or at service counters throughout the city.</p>
 
             <p>In these pages, you will be able to walk through the process of analyzing the 1.2 million requests which were linked to a specific borough, through an interactive pivot table such as the one you see below. As you advance through the steps of the analysis, the table will reconfigure itself to show you a different view of the data. You can interact with the pivot table at any time by dragging the fields around to modify the tables and graphs, or by hiding/showing information by clicking on the little triangles.</p>
 
@@ -240,7 +240,7 @@ body {
                 data-catFilter=""
                 data-title="Requests by Category and Borough">
 
-            <p>Here is the distribution of requests by borough and category. The boroughs are ordered by population. You can mouse over the bars to see which category is which and how many requests it represents within each borough.</p>
+            <p>On an administrative level, Montreal is divided up into <a href="https://en.wikipedia.org/wiki/Boroughs_of_Montreal" target="_blank">19 boroughs</a>, some of which were merged into the city in 2002 and reorganized in 2006. Here is the distribution of requests by borough and category. The boroughs are ordered by population. You can mouse over the bars to see which category is which and how many requests it represents within each borough.</p>
 
             <h3>Observations</h3>
             <ul>
@@ -264,7 +264,6 @@ body {
                 <li>Selective Collection, Other, and Security light up for Saint-Laurent
                 <li>Security also lights up L’Île-Bizard–Sainte-Geneviève
                 <li>Taxes light up in LaSalle and Saint-Léonard
-                <li>Environment pops in Pierrefonds-Roxboro
                 <li>The fact that Other lights up in Montréal-Nord and Saint-Laurent suggests maybe the categorization scheme is missing important request types in those areas.
             </ul>
 
@@ -282,8 +281,8 @@ body {
 
             <ul>
                 <li>Overall request volumes were relatively constant year over year.
-                <li>Bulky Collection, Security and Parking go down over time.
-                <li>Snow jumps around (which makes sense).
+                <li>Security and Parking show a steep decline during 2010.
+                <li>Snow and Bulky Collection jump in 2008.
                 <li>Selective Collection jumps in 2012.
             </ul>
             </div>
@@ -300,7 +299,7 @@ body {
 
             <ul>
                 <li>Overall request volume is high in summer, low in winter.
-                <li>Snow is big in winter, no surprise.
+                <li>Snow is big in winter and absent in summer, no surprise.
                 <li>Taxes spikes in February.
                 <li>Environment spikes in May.
             </ul>
@@ -313,7 +312,7 @@ body {
                 data-catFilter="Security"
                 data-title="Security Requests over Time" >
 
-            <p>The Security category stood out in both time and space (a large percentage of the requests in two boroughs, and a decline year over year), so let's take a closer look. In the graph below we have Security requests by borough over time by month. We see a dramatic pattern: almost the entire change in request volume over the years is due to Saint-Laurent. Looking closely, L’Île-Bizard–Sainte-Geneviève also displays a cyclical pattern with more requests in summer. You can click on Saint-Laurent in the legend to hide that borough's line and see the others more clearly.</p>
+            <p>The Security category stood out in both time and space (a <a href="#4">large percentage</a> of the requests in two boroughs, and a <a href="#5">decline year over year</a>), so let's take a closer look. In the graph below we have Security requests by borough over time by month. We see a dramatic pattern: almost the entire change in request volume over the years is due to Saint-Laurent. Looking closely, L’Île-Bizard–Sainte-Geneviève also displays a cyclical pattern with more requests in summer. You can click on Saint-Laurent in the legend to hide that borough's line and see the others more clearly.</p>
 
             <h3>Analysis</h3>
             <ul>
@@ -329,13 +328,13 @@ body {
                 data-catFilter="Parking"
                 data-title="Parking Requests over Time" >
 
-            <p>The Parking category stood out as being much higher in 2008/2009 than in 2011/2012. Taking a closer look at just that category we can pin-point the change in May/June 2010, and we can see that unlike the Security category, it is not a case of a single anomalous borough, but rather spread out across many boroughs.</p>
+            <p>The Parking category stood out as <a href="#5">being much higher in 2008/2009 than in 2011/2012</a>. Taking a closer look at just that category we can pin-point the change in May/June 2010, and we can see that unlike the Security category, it is not a case of a single anomalous borough, but rather spread out across many boroughs.</p>
 
             <h3>Analysis</h3>
 
             <ul>
-                <li>In the underlying dataset, the description of the requests which stopped appearing in June 2010 was "Intèrvention stationnement".
-                <li>Interestingly, in this case the Saint-Laurent borough again stands out as having more requests in this category than others in 2010-2012 but no requests from that borough had the "Intèrvention stationnement" description.
+                <li>In the underlying dataset, the description of the requests which stopped appearing in June 2010 was "Intervention stationnement".
+                <li>Interestingly, in this case the Saint-Laurent borough again stands out as having more requests in this category than others in 2010-2012 but no requests from that borough had the "Intervention stationnement" description.
             </ul>
 
             </div>
@@ -346,7 +345,7 @@ body {
                 data-catFilter="Selective Collection"
                 data-title="Selective Collection Requests over Time" >
 
-            <p>The Selective Collection category stood out as jumping up in 2012 and being a big concern in Saint-Laurent. Taking a closer look, we can see that Saint-Laurent figures prominently, but in small spikes throughout the period. Additionally, we see that the rise in 2012 occurs across all boroughs starting in April/May.</p>
+            <p>The Selective Collection category stood out as <a href="#5">jumping up in 2012</a> and being <a href="#4">a big concern in Saint-Laurent</a>. Taking a closer look, we can see that Saint-Laurent figures prominently, but in small spikes throughout the period. Additionally, we see that the rise in 2012 occurs across all boroughs starting in April/May.</p>
 
             <h3>Analysis</h3>
 
@@ -363,7 +362,7 @@ body {
                 data-catFilter="Bulky Collection"
                 data-title="Bulky Collection over Time" >
 
-            <p>The Bulky Collection category stood out as being a huge concern in Rivière-des-Prairies–Pointe-aux-Trembles and as spiking in 2008. Taking a closer look, RDP-PAT dominates throughout the 5-year period, but we also see the smaller pattern of every borough having more requests about this in 2008. If you look closely, you will see that there are also regular spikes in this category of requests in May and September in Lachine</p>
+            <p>The Bulky Collection category stood out as being <a href="#4">a huge concern in Rivière-des-Prairies–Pointe-aux-Trembles</a> and as <a href="#5">spiking in 2008</a>. Taking a closer look, RDP-PAT dominates throughout the 5-year period, but we also see the smaller pattern of every borough having more requests about this in 2008. If you look closely, you will see that there are also regular spikes in this category of requests in May and September in Lachine</p>
 
             <h3>Analysis</h3>
 
@@ -381,7 +380,7 @@ body {
                 data-catFilter="Taxes"
                 data-title="Taxes Requests over Time" >
 
-            <p>The Taxes category stood out as spiking in February, and as being a big deal in LaSalle and Saint-Léonard. Taking a closer look, we see that most boroughs have a spike in February, but that Saint-Laurent, Saint-Léonard and LaSalle have a different pattern that spikes in April and tails off more slowly.</p>
+            <p>The Taxes category stood out as <a href="#6">spiking in February</a>, and as being <a href="#4">a big deal in LaSalle and Saint-Léonard</a>. Taking a closer look, we see that most boroughs have a spike in February, but that Saint-Laurent, Saint-Léonard and LaSalle have a different pattern that spikes in April and tails off more slowly.</p>
 
             <h3>Analysis</h3>
 
@@ -397,13 +396,16 @@ body {
                 data-catFilter="Environment"
                 data-title="Environment Requests over Time" >
 
-            <p>The Environment category stood out as spiking in the month of May. Taking a closer look, we can immediately see that the May spike is solely due to Saint-Laurent. There is also a smaller pattern of spikes in March in Le Sud-Ouest.</p>
+            <p>The Environment category stood out as <a href="#6">spiking in the month of May</a>. Taking a closer look, we can immediately see that the May spike is solely due to Saint-Laurent. There is also a smaller pattern of spikes in March in Le Sud-Ouest, and some spikes in Ville-Marie, Rosemont–La Petite-Patrie and Pierrefonds-Roxboro.</p>
 
             <h3>Analysis</h3>
 
             <ul>
                 <li>All of the May spikes in Saint-Laurent can be explained by one request description: "Maisons fleuries". This relates to a contest held yearly in Saint-Laurent.
                 <li>The spikes in Le Sud-Ouest are all described as "Jardins - Renouvellement", which makes sense as a seasonal event.
+                <li>The increase in requests in 2012 (and the spike in November 2011) in Ville-Marie is entirely accounted for by requests related to graffiti.
+                <li>The spike in Pierrefonds-Roxboro in late 2012 is entirely accounted for by requests related to (presumably temporary) car shelters.
+                <li>The spike in Rosemont–La Petite-Patrie is related to the Eco-quartier program.
             </ul>
             </div>
             <div class="chapter"
@@ -413,7 +415,9 @@ body {
                 data-catFilter=""
                 data-title="Conclusions" >
 
-            <p>This analysis began with an overview chart of requests volumes by category (replicated below) and then proceeded to look at places and time periods where request volumes deviated from this overall pattern. Most of the deviations turned out to be attributable to seasonal effects or borough-specific policies or differences in the way in which different boroughs use the Gestion des demandes clients (GDC) system. In the aggregate, however, most of the time and in most places, the distribution of requests does follow the overall pattern, so we can look at the chart below and conclude that it more or less sums up the bulk of the service requests in the GDC system.</p>
+            <p>This analysis began with an overview chart of requests volumes by category (replicated below) and then proceeded to look at places and time periods where request volumes deviated from this overall pattern. Most of the deviations turned out to be attributable to seasonal effects or borough-specific policies or differences in the way in which different boroughs use the Gestion des demandes clients (GDC) system. In the aggregate, however, most of the time and in most places, the distribution of requests does follow the overall pattern, so we can look at the chart below and conclude that it more or less sums up the bulk of the service requests in the GDC system. That said, there may be more subtle patterns and stories of interest in the "Other" category, which represents 6.5% of the requests.</p>
+
+            <p>One additional note worth mentioning is that although the city hosts a <a href="http://www1.ville.montreal.qc.ca/banque311/" target="_blank">311 knowledge bank</a>, many of the city website's pages have displayed a "Site maintenance" page for years, making it difficult to do research for a project like this. In an <a href="http://montrealgazette.com/news/local-news/montreals-vision-for-a-smarter-311" target="_blank">interview with the Gazette</a>, city officials have said that the website is a priority.</p>
 
             <p>Questions, feedback or comments on this analysis are welcome by email at <a href="mailto:nicolas@kruchten.com">nicolas@kruchten.com</a>!</p>
             </div>
