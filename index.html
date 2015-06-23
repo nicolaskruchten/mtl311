@@ -211,7 +211,7 @@ body {
 
             <p>In early 2015, <a href="http://nicolas.kruchten.com">Nicolas Kruchten</a> collaborated with a reporter from the Montreal Gazette to analyze a dataset containing information about 1.4 million service requests received by the City of Montreal from its citizens. The resulting article was entitled "<a href="http://montrealgazette.com/news/local-news/311-calls-whats-bugging-montreal" target="_blank">Montreal's 311 records shed light on residents' concerns — to a point</a>" and credits Nicolas at the bottom. The dataset, obtained from the city's Gestion des demandes clients (GDC) system via an Access to Information request, covered the five years from 2008 to 2012 and contained only the date and a very short description for each request, and in most cases, an address. Notably missing was any indication of resolution time or correspondance with the originating citizen. The service requests were received by the city through its 311 phone line or at service counters throughout the city.</p>
 
-            <p>In these pages, you will be able to walk through the process of analyzing the 1.2 million requests which were linked to a specific borough, through an interactive pivot table such as the one you see below. As you advance through the steps of the analysis, the table will reconfigure itself to show you a different view of the data. You can interact with the pivot table at any time by dragging the fields around to modify the tables and graphs, or by hiding/showing information by clicking on the little triangles.</p>
+            <p>In these pages, you will be able to walk through the process of analyzing the 1.2 million requests which were linked to a specific borough through an interactive pivot table such as the one you see below. As you advance through the steps of the analysis, the table will reconfigure itself to show you different views of the data. You can interact with the pivot table at any time by dragging the fields around to modify the tables and graphs, or by hiding/showing information by clicking on the little triangles.</p>
 
             <p>Let's get started!</p>
 
@@ -224,7 +224,7 @@ body {
                 data-catFilter=""
                 data-title="Requests by Category" >
 
-            <p>The original dataset contained more than 4,000 unique request descriptions, of which more than 3/4 appeared only once. The pivot table below is loaded with a partially-processed dataset: the requests have been grouped into 18 broad categories through <a href="http://nicolas.kruchten.com/content/2015/06/montreal-311/" target="_blank">an automated process documented elsewhere</a>. The chart below shows the distribution of requests by category; the categories are ordered by overall request volume.</p>
+            <p>The original dataset contained more than 4,000 unique request descriptions, of which more than three  quarters appeared only once. The pivot table below is loaded with a partially-processed dataset: the requests have been grouped into 18 broad categories through <a href="http://nicolas.kruchten.com/content/2015/06/montreal-311/" target="_blank">an automated process documented elsewhere</a>. The chart below shows the distribution of requests by category; the categories are ordered by overall request volume.</p>
 
             <h3>Observations</h3>
             <ul>
@@ -240,7 +240,7 @@ body {
                 data-catFilter=""
                 data-title="Requests by Category and Borough">
 
-            <p>On an administrative level, Montreal is divided up into <a href="https://en.wikipedia.org/wiki/Boroughs_of_Montreal" target="_blank">19 boroughs</a>, some of which were merged into the city in 2002 and reorganized in 2006. Here is the distribution of requests by borough and category. The boroughs are ordered by population. You can mouse over the bars to see which category is which and how many requests it represents within each borough.</p>
+            <p>On an administrative level, Montreal is divided up into <a href="https://en.wikipedia.org/wiki/Boroughs_of_Montreal" target="_blank">19 boroughs</a>, some of which were <a href="https://en.wikipedia.org/wiki/2002%E2%80%9306_municipal_reorganization_of_Montreal" target="_blank">merged into the city in 2002 and then reorganized in 2006</a>. Here is the distribution of requests by borough and category. The boroughs are ordered by population. You can mouse over the bars to see which category is which and how many requests it represents within each borough.</p>
 
             <h3>Observations</h3>
             <ul>
@@ -335,7 +335,7 @@ body {
             <h3>Analysis</h3>
 
             <ul>
-                <li>In the underlying dataset, the description of the requests which stopped appearing in June 2010 was "Intervention stationnement".
+                <li>In the underlying dataset, the description of the requests which stopped appearing in June 2010 was "Intervention stationnement", suggesting a change in city policy at that time.
                 <li>Interestingly, in this case the Saint-Laurent borough again stands out as having more requests in this category than others in 2010-2012 but no requests from that borough had the "Intervention stationnement" description.
             </ul>
 
@@ -387,7 +387,7 @@ body {
             <h3>Analysis</h3>
 
             <ul>
-                <li>The punctual spikes in this category are due to the timing of city correspondance about municipal taxes, and it's likely that the three anomalous boroughs just have a different schedule for these things. The three outliers share a request description not found in the other boroughs: "Changement d'adresse - Taxes eau et déchets".
+                <li>The punctual spikes in this category are due to the timing of city correspondance about municipal taxes, and it's likely that the three anomalous boroughs just have a different schedule for these things. The three outliers were independent municipalities until 2002, and they share a request description not found in the other boroughs: "Changement d'adresse - Taxes eau et déchets".
             </ul>
 
             </div>
