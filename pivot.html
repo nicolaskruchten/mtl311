@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>Montreal 311 Service Requests, an Analysis</title>
+        
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.js"></script>
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+
+
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pivottable/1.6.1/pivot.min.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/1.6.1/pivot.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/1.6.1/c3_renderers.min.js"></script>
+    <script>  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');  ga('create', 'UA-46914903-1', 'kruchten.com');  ga('send', 'pageview');</script>
+
+    </head>
+    <style>
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:400');
+
+body { 
+  font-family: 'Open Sans'; 
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+        .c3-line, .c3-focused {stroke-width: 3px !important;}
+        .c3-bar {stroke: white !important; stroke-width: 1;}
+        .c3 text { font-size: 12px; color: grey;}
+        .tick line {stroke: white;}
+        .c3-axis path {stroke: grey;}
+
+        .chapter {display: none;}
+
+        p, li {
+            font-size: 18px;
+              line-height: 1.5;
+            }
+        li {margin-top: 5px;}
+    </style>
+    <body>
+        <script type="text/javascript">
+            var tpl = $.pivotUtilities.aggregatorTemplates;
+            var intfmt = $.pivotUtilities.numberFormat({digitsAfterDecimal: 0});
+            var num_requests = function() { return tpl.sum(intfmt)(["Requests"]) };
+            $(function(){
+                $.get("311_pivot.csv", function(csvData) {
+                    $("#output").pivotUI(
+                        $.csv.toArrays(csvData),
+                        {
+                            aggregators: {
+                                "Requests": num_requests,
+                                "Request %":   tpl.fractionOf(num_requests, "total"),
+                                "Requests row %":    tpl.fractionOf(num_requests, "row"),
+                                "Requests col %": tpl.fractionOf(num_requests, "col"),
+                            },
+                            hiddenAttributes: ["Requests"],
+                            renderers: {
+                                "Table": $.pivotUtilities.renderers["Table"],
+                                "Heatmap": $.pivotUtilities.renderers["Heatmap"],
+                                "Line Chart": $.pivotUtilities.c3_renderers["Line Chart"],
+                                "Bar Chart": $.pivotUtilities.c3_renderers["Stacked Bar Chart"],
+                            },
+                            sorters: function(attr) {
+                                if(attr == "Month") {
+                                    return $.pivotUtilities.sortAs(
+                                        ["Jan","Feb","Mar",
+                                         "Apr","May","Jun",
+                                         "Jul","Aug","Sep",
+                                         "Oct","Nov","Dec"]);
+                                }
+                                if(attr == "Borough") {
+                                    return $.pivotUtilities.sortAs(
+                                        ["Côte-des-Neiges–Notre-Dame-de-Grâce",
+                                        "Villeray–Saint-Michel–Parc-Extension",
+                                        "Rosemont–La Petite-Patrie",
+                                        "Mercier–Hochelaga-Maisonneuve",
+                                        "Ahuntsic-Cartierville",
+                                        "Rivière-des-Prairies–Pointe-aux-Trembles",
+                                        "Le Plateau-Mont-Royal",
+                                        "Saint-Laurent",
+                                        "Ville-Marie",
+                                        "Montréal-Nord",
+                                        "Saint-Léonard",
+                                        "LaSalle",
+                                        "Le Sud-Ouest",
+                                        "Pierrefonds-Roxboro",
+                                        "Verdun",
+                                        "Anjou",
+                                        "Lachine",
+                                        "Outremont",
+                                        "L’Île-Bizard–Sainte-Geneviève"]);
+                                }
+                                if(attr == "Category") {
+                                    return $.pivotUtilities.sortAs(
+                                        ["Selective Collection", "Roads", "Garbage Collection", "Water", "Other", "Trees", "Signage", "Dogs", "Environment", "Bulky Collection", "Lighting", "Parking", "Snow", "Permits", "Sewers", "Security", "Taxes", "Parks"]);
+                                }
+                            },
+                            rendererOptions: { 
+                                c3: {
+                                    size: {
+                                        width: window.innerWidth - 220,
+                                        height: window.innerHeight - 220
+                                    },
+                                    color: {
+                                        pattern: 
+                                          [ "#3366cc", "#dc3912", "#ff9900", "#109618",
+                                            "#990099", "#0099c6", "#dd4477", "#66aa00",
+                                            "#b82e2e", "#316395", "#994499", "#22aa99",
+                                            "#aaaa11", "#6633cc", "#e67300", "#8b0707",
+                                            "#651067", "#329262", "#5574a6", "#3b3eac" ]
+                                    }
+                                }
+                            }
+                        }
+                    );
+                });
+            });
+        </script>
+        <div id="output" style="margin: 30px;"></div>
+    </body>
+</html>
