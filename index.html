@@ -3,7 +3,7 @@
     <head>
         <meta charset='utf-8'>
         <title>Montreal 311 Service Requests, an Analysis</title>
-        
+
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.css">
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js"></script>
@@ -14,9 +14,9 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 
 
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pivottable/1.6.1/pivot.min.css">
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/1.6.1/pivot.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/1.6.1/c3_renderers.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.13.0/pivot.min.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.13.0/pivot.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.13.0/c3_renderers.min.js"></script>
     <script>  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');  ga('create', 'UA-46914903-1', 'kruchten.com');  ga('send', 'pageview');</script>
 
     </head>
@@ -36,8 +36,8 @@
 
 h1, h2, h3, h4, h5, h6, .brand {font-family: 'Museo Slab 700';}
 
-body { 
-  font-family: 'Open Sans'; 
+body {
+  font-family: 'Open Sans';
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   color: #333;
@@ -111,10 +111,10 @@ body {
                             ["Selective Collection", "Roads", "Garbage Collection", "Water", "Other", "Trees", "Signage", "Dogs", "Environment", "Bulky Collection", "Lighting", "Parking", "Snow", "Permits", "Sewers", "Security", "Taxes", "Parks"]);
                     }
                 },
-                rendererOptions: { 
+                rendererOptions: {
                     c3: {
                         color: {
-                            pattern: 
+                            pattern:
                               [ "#3366cc", "#dc3912", "#ff9900", "#109618",
                                 "#990099", "#0099c6", "#dd4477", "#66aa00",
                                 "#b82e2e", "#316395", "#994499", "#22aa99",
@@ -134,9 +134,9 @@ body {
                         var chapter = $("#chapter"+chapterNumber);
                         chapter.show();
                         var chapter_params = {
-                            rows: chapter.data("rows").split(","), 
+                            rows: chapter.data("rows").split(","),
                             cols: chapter.data("cols").split(","),
-                            aggregatorName: chapter.data("agg"), 
+                            aggregatorName: chapter.data("agg"),
                             rendererName: chapter.data("view")
                         }
                         var catFilter = chapter.data("catfilter")
@@ -144,7 +144,7 @@ body {
                             chapter_params["inclusions"] = {Category: catFilter.split(",")}
                         $.extend(chapter_params, common_params);
                         $("#output").pivotUI(data, chapter_params, true);
-                        
+
                         if(changeState && history.pushState) {
                             history.pushState(null, null,'#'+chapterNumber,"");
                         }
@@ -156,6 +156,7 @@ body {
                             $("#nextlink").data("chapter", chapterNumber+1).show()
                         }
                         $("#chapter_list").val("jump");
+                        window.scrollTo(0,0)
                     }
 
                     function showChapterClickHandler(e) {
@@ -180,7 +181,7 @@ body {
                         $("#chapter_list")
                             .append($("<option>", {value: chapterNumber})
                             .text(""+chapterNumber+" - " +title))
-                        
+
 
                     })
 
@@ -204,7 +205,7 @@ body {
         <div id="chapters" style="width: 800px; margin: 0 auto;">
             <h1 align="center">Montreal 311 Service Requests, an Analysis</h1>
             <div class="chapter"
-                data-rows="" data-cols="" 
+                data-rows="" data-cols=""
                 data-agg="Requests"
                 data-view="Table"
                 data-catFilter=""
@@ -219,7 +220,7 @@ body {
 
             </div>
             <div class="chapter"
-                data-rows="" data-cols="Category" 
+                data-rows="" data-cols="Category"
                 data-agg="Requests"
                 data-view="Bar Chart"
                 data-catFilter=""
@@ -235,7 +236,7 @@ body {
 
             </div>
             <div class="chapter"
-                data-rows="Category" data-cols="Borough" 
+                data-rows="Category" data-cols="Borough"
                 data-agg="Requests"
                 data-view="Bar Chart"
                 data-catFilter=""
@@ -252,13 +253,13 @@ body {
 
             </div>
             <div class="chapter"
-                data-rows="Borough" data-cols="Category" 
+                data-rows="Borough" data-cols="Category"
                 data-agg="Requests row %"
                 data-view="Heatmap"
                 data-catFilter=""
                 data-title="Requests by Category and Borough II" >
 
-            <p>In the table below, we are looking at the percentage of requests that each category represents within each borough. The redder the cell, the more that category preoccupied that borough.</p> 
+            <p>In the table below, we are looking at the percentage of requests that each category represents within each borough. The redder the cell, the more that category preoccupied that borough.</p>
 
             <h3>Observations</h3>
             <ul>
@@ -271,7 +272,7 @@ body {
 
             </div>
             <div class="chapter"
-                data-rows="Category" data-cols="Year" 
+                data-rows="Category" data-cols="Year"
                 data-agg="Requests row %"
                 data-view="Heatmap"
                 data-catFilter=""
@@ -291,7 +292,7 @@ body {
             </ul>
             </div>
             <div class="chapter"
-                data-rows="Category" data-cols="Month" 
+                data-rows="Category" data-cols="Month"
                 data-agg="Requests row %"
                 data-view="Heatmap"
                 data-catFilter=""
@@ -310,7 +311,7 @@ body {
 
             </div>
             <div class="chapter"
-                data-rows="Borough" data-cols="Year,Month" 
+                data-rows="Borough" data-cols="Year,Month"
                 data-agg="Requests"
                 data-view="Line Chart"
                 data-catFilter="Security"
@@ -323,10 +324,10 @@ body {
                 <li>Most of the requests which comprise the anomalous line in 2008-2010 in Saint-Laurent have the same description ("20 - Surveillance particulière") and many are about a handful of addresses, usually of parks. As mentioned in the <a href="http://montrealgazette.com/news/local-news/311-calls-whats-bugging-montreal" target="_blank">Gazette article</a>, Saint-Laurent has a private security force which uses the 311 system to record some of its activities. Perhaps this practice stopped in April 2010.
                 <li>We have no clear explanation for the cyclical pattern in L’Île-Bizard–Sainte-Geneviève but the requests all have the same description: "Surveillance et sécurité publique".
             </ul>
-            
+
             </div>
             <div class="chapter"
-                data-rows="Borough" data-cols="Year,Month" 
+                data-rows="Borough" data-cols="Year,Month"
                 data-agg="Requests"
                 data-view="Line Chart"
                 data-catFilter="Parking"
@@ -343,7 +344,7 @@ body {
 
             </div>
             <div class="chapter"
-                data-rows="Borough" data-cols="Year,Month" 
+                data-rows="Borough" data-cols="Year,Month"
                 data-agg="Requests"
                 data-view="Line Chart"
                 data-catFilter="Selective Collection"
@@ -360,7 +361,7 @@ body {
 
             </div>
             <div class="chapter"
-                data-rows="Borough" data-cols="Year,Month" 
+                data-rows="Borough" data-cols="Year,Month"
                 data-agg="Requests"
                 data-view="Line Chart"
                 data-catFilter="Bulky Collection"
@@ -378,7 +379,7 @@ body {
 
             </div>
             <div class="chapter"
-                data-rows="Borough" data-cols="Year,Month" 
+                data-rows="Borough" data-cols="Year,Month"
                 data-agg="Requests"
                 data-view="Line Chart"
                 data-catFilter="Taxes"
@@ -394,7 +395,7 @@ body {
 
             </div>
             <div class="chapter"
-                data-rows="Borough" data-cols="Year,Month" 
+                data-rows="Borough" data-cols="Year,Month"
                 data-agg="Requests"
                 data-view="Line Chart"
                 data-catFilter="Environment"
@@ -413,7 +414,7 @@ body {
             </ul>
             </div>
             <div class="chapter"
-                data-rows="" data-cols="Category" 
+                data-rows="" data-cols="Category"
                 data-agg="Requests"
                 data-view="Bar Chart"
                 data-catFilter=""
@@ -437,7 +438,7 @@ body {
             <a href="#" id="nextlink">Next &raquo;</a>
         </div>
         <br />
-        
+
         <div align="center">
             <div id="output" style="margin: 30px;"></div>
         </div>
