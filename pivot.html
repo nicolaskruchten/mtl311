@@ -3,7 +3,7 @@
     <head>
         <meta charset='utf-8'>
         <title>Montreal 311 Service Requests, an Analysis</title>
-        
+
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.css">
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.js"></script>
@@ -14,17 +14,17 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 
 
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pivottable/1.6.1/pivot.min.css">
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/1.6.1/pivot.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/1.6.1/c3_renderers.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.14.0/pivot.min.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.14.0/pivot.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.14.0/c3_renderers.min.js"></script>
     <script>  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');  ga('create', 'UA-46914903-1', 'kruchten.com');  ga('send', 'pageview');</script>
 
     </head>
     <style>
 @import url('http://fonts.googleapis.com/css?family=Open+Sans:400');
 
-body { 
-  font-family: 'Open Sans'; 
+body {
+  font-family: 'Open Sans';
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -100,14 +100,14 @@ body {
                                         ["Selective Collection", "Roads", "Garbage Collection", "Water", "Other", "Trees", "Signage", "Dogs", "Environment", "Bulky Collection", "Lighting", "Parking", "Snow", "Permits", "Sewers", "Security", "Taxes", "Parks"]);
                                 }
                             },
-                            rendererOptions: { 
+                            rendererOptions: {
                                 c3: {
                                     size: {
                                         width: window.innerWidth - 220,
                                         height: window.innerHeight - 220
                                     },
                                     color: {
-                                        pattern: 
+                                        pattern:
                                           [ "#3366cc", "#dc3912", "#ff9900", "#109618",
                                             "#990099", "#0099c6", "#dd4477", "#66aa00",
                                             "#b82e2e", "#316395", "#994499", "#22aa99",
